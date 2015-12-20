@@ -1,5 +1,6 @@
 var webpack = require("webpack");
 var config = require("./webpack.client.js");
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 var hostname = process.env.HOSTNAME || "localhost";
 
@@ -18,7 +19,8 @@ config.output.hotUpdateChunkFilename = "update/[hash]/[id].update.js";
 
 config.plugins = [
 	new webpack.DefinePlugin({isBrowser: true}),
-	new webpack.HotModuleReplacementPlugin()
+	new webpack.HotModuleReplacementPlugin(),
+	new ExtractTextPlugin("style.css")
 ];
 
 config.module.postLoaders =  [
