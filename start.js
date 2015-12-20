@@ -1,15 +1,7 @@
 require("babel-polyfill");
+require("babel-core/register");
 
-require("babel-core/register")({
-	only: /src/,
-	presets: ["es2015", "react", "stage-0"]
-});
-
-/**
- * Define isomorphic constants.
- */
-global.__CLIENT__ = false;
-global.__SERVER__ = true;
+global.isBrowser = false;
 
 if (process.env.NODE_ENV !== "production") {
 	if (!require("piping")({hook: true, includeModules: false})) {
@@ -17,4 +9,4 @@ if (process.env.NODE_ENV !== "production") {
 	}
 }
 
-require("./src/server");
+require("./src/server/server");

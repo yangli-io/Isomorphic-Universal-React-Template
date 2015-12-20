@@ -14,7 +14,7 @@ module.exports = {
 		publicPath:    "dist/"
 	},
 	plugins: [
-		new webpack.DefinePlugin({__CLIENT__: true, __SERVER__: false}),
+		new webpack.DefinePlugin({isBrowser: true}),
 		new webpack.DefinePlugin({"process.env": {NODE_ENV: '"production"'}}),
 		new webpack.optimize.DedupePlugin(),
 		new webpack.optimize.OccurenceOrderPlugin(),
@@ -23,7 +23,7 @@ module.exports = {
 	module:  {
 		loaders: [
 			{test: /\.json$/, loaders: ["json"]},
-			{test: /\.js$/, loaders: ["babel?cacheDirectory&presets[]=es2015&presets[]=react&presets[]=stage-0"], exclude: /node_modules/}
+			{test: /\.(js|jsx)$/, loaders: ["babel"], exclude: /node_modules/}
 		],
 		postLoaders: [],
 		noParse: /\.min\.js/
@@ -37,7 +37,7 @@ module.exports = {
 			"node_modules",
 			"web_modules"
 		],
-		extensions: ["", ".json", ".js"]
+		extensions: ["", ".json", ".js", ".jsx"]
 	},
 	node:    {
 		__dirname: true,

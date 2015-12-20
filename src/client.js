@@ -1,19 +1,12 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import {Router} from "react-router";
-import Transmit from "react-transmit";
-import routes from "views/routes";
-import {createHistory} from "history";
+import { render } from "react-dom";
+import { Router } from "react-router";
+import routes from "routes";
+import { createHistory } from "history";
 
-/**
- * Fire-up React Router.
- */
 const reactRoot = window.document.getElementById("react-root");
-Transmit.render(Router, {routes, history: createHistory()}, reactRoot);
+render(routes, reactRoot);
 
-/**
- * Detect whether the server-side render has been discarded due to an invalid checksum.
- */
 if (process.env.NODE_ENV !== "production") {
 	if (!reactRoot.firstChild || !reactRoot.firstChild.attributes ||
 	    !reactRoot.firstChild.attributes["data-react-checksum"]) {
