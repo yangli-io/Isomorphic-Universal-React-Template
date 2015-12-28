@@ -1,9 +1,11 @@
+import React from 'react';
 import App from "components/App";
-import React from "react";
 import {Router, Route} from "react-router";
+import history from './shared';
+import AnotherPage from './components/AnotherPage/AnotherPage';
 
 export default (
-	<Router>
-		<Route path="/" component={App} />
-	</Router>
-);
+	<Route path="/" component={App}>
+		<Route path="anotherpage" component={AnotherPage}></Route>
+	</Route>
+)

@@ -5,8 +5,9 @@ import html from './markup/html';
 import React from "react";
 import { renderToString } from "../../node_modules/react-dom/server";
 import { RoutingContext, match } from "react-router";
-
-import routes from "../routes";
+import { Provider } from 'react-redux';
+import routes from '../routes';
+import { store } from '../shared';
 
 const app      = koa();
 const hostname = process.env.HOSTNAME || "localhost";
@@ -31,9 +32,10 @@ app.use(function *(next) {
 			}
 
 			renderProps = renderProps || {};
-			const appMarkup = renderToString(<RoutingContext {...renderProps} />);
+			const appMarkup = renderToString(<Provider store={store}><RoutingContext {...renderProps} /></Provider>);
+			const initialState = store.getState();
 			this.type = "text/html";
-			this.body = html({appMarkup});
+			this.body = html({appMarkup, initialState});
 
 			callback(null);
 		});

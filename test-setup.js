@@ -1,7 +1,17 @@
+import sinon from 'sinon';
 import chai, { expect } from 'chai';
 import sinonChai from 'sinon-chai';
 
 global.expect = expect;
+global.sinon = sinon;
+
+global.setBrowser = function() {
+	global.isBrowser = true;
+};
+global.setServer = function() {
+	global.isBrowser = false;
+};
+
 chai.Should();
 chai.use(sinonChai);
 

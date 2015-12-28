@@ -1,11 +1,22 @@
 import React from "react";
 import { render } from "react-dom";
-import { Router } from "react-router";
-import routes from "routes";
-import { createHistory } from "history";
+import { Provider } from 'react-redux'
+import {Router, Route} from "react-router";
+import App from "components/App";
+import AnotherPage from './components/AnotherPage/AnotherPage';
+import { history, store } from './shared';
+import Routes from './routes';
+
+const Client = (
+	<Provider store={store}>
+		<Router history={history}>
+			{ Routes }
+		</Router>
+	</Provider>
+);
 
 const reactRoot = window.document.getElementById("react-root");
-render(routes, reactRoot);
+render(Client, reactRoot);
 
 if (process.env.NODE_ENV !== "production") {
 	if (!reactRoot.firstChild || !reactRoot.firstChild.attributes ||

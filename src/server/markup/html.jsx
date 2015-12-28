@@ -12,6 +12,9 @@ export default function HTML(data){
 	</head>
 	<body>
 		<div id="react-root">${data.appMarkup}</div>
+		<script>
+          window.__INITIAL_STATE__ = ${JSON.stringify(data.initialState)}
+        </script>
 		<script src="http://localhost:8080/dist/client.js"></script>
 	</body>
 </html>`
