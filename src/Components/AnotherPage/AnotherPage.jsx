@@ -2,15 +2,7 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { increment, decrement } from '../../actions/counterActions';
 
-export default class Main extends Component {
-	componentWillMount () {
-		if (isBrowser) {
-			console.log("Hello client");
-		} else {
-			console.log("Hello server");
-		}
-	}
-
+export class AnotherPage extends Component {
 	render () {
 		return (
 			<div>
@@ -28,5 +20,5 @@ function mapStateToProps(state) {
 	}
 }
 
-export default connect(mapStateToProps, { increment, decrement })(Main);
+export default connect(mapStateToProps, { increment, decrement })(AnotherPage);
 

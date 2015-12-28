@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import { Link } from 'react-router';
-import { Provider } from 'react-redux'
-import { store } from '../shared';
 
 export default class Main extends Component {
 	componentWillMount () {
