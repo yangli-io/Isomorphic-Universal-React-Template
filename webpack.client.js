@@ -24,9 +24,15 @@ module.exports = {
 		new ExtractTextPlugin("style.css")
 	],
 	module:  {
+		preLoaders: [
+			{
+				test: /\.jsx?$/,
+				loaders: ['eslint-loader']
+			}
+		],
 		loaders: [
 			{test: /\.json$/, loaders: ["json"]},
-			{test: /\.(js|jsx)$/, loaders: ["babel"], exclude: /node_modules/},
+			{test: /\.jsx?$/, loaders: ["babel"], exclude: /node_modules/},
 			{test: /\.scss$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader')}
 		],
 		postLoaders: [],
@@ -43,8 +49,8 @@ module.exports = {
 		],
 		extensions: ["", ".json", ".js", ".jsx"]
 	},
-	node:    {
+	node: {
 		__dirname: true,
-		fs:        'empty'
+		fs: 'empty'
 	}
 };

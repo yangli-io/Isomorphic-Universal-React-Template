@@ -23,9 +23,7 @@ config.plugins = [
 	new ExtractTextPlugin("style.css")
 ];
 
-config.module.postLoaders =  [
-	{test: /\.js$/, loaders: ["react-hot"], exclude: /node_modules/}
-];
+config.module.postLoaders.push({test: /\.js$/, loaders: ["react-hot"], exclude: /node_modules/});
 
 config.devServer = {
 	publicPath:  "http://" + hostname + ":8080/dist/",

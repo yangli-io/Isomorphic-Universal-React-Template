@@ -1,12 +1,12 @@
-import React, { Component } from "react";
+import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 
 export default class Main extends Component {
 	componentWillMount () {
 		if (isBrowser) {
-			console.log("Hello client");
+			console.log('Hello client');
 		} else {
-			console.log("Hello server");
+			console.log('Hello server');
 		}
 	}
 

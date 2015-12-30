@@ -11,7 +11,7 @@ export default function HTML(data){
 		<link rel="stylesheet" href="http://localhost:8080/dist/style.css"/>
 	</head>
 	<body>
-		<div id="react-root">${data.appMarkup}</div>
+		<div id="root">${data.appMarkup}</div>
 		<script>
           window.__INITIAL_STATE__ = ${JSON.stringify(data.initialState)}
         </script>

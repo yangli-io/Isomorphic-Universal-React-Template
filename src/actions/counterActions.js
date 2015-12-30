@@ -1,19 +1,25 @@
 export const INCREMENT = 'INCREMENT';
 export const DECREMENT = 'DECREMENT';
 
+export function initialize() {
+	this.async.task((done) => {
+		setTimeout(() => {
+			done();
+			this.dispatch({
+				type: INCREMENT
+			});
+		}, 200);
+	});
+}
+
 export function increment() {
-	console.log('yolo');
-	return dispatch => {
-		dispatch({
-			type: INCREMENT
-		});
-	}
+	this.dispatch({
+		type: INCREMENT
+	});
 }
 
 export function decrement() {
-	return dispatch => {
-		dispatch({
-			type: DECREMENT
-		});
-	}
+	this.dispatch({
+		type: DECREMENT
+	});
 }
