@@ -51,6 +51,5 @@ app.use(function *(next) {
 
 
 app.listen(port, () => {
-	console.info('==> ✅  Server is listening');
-	console.info('==>     Go to http://%s:%s', hostname, port);
+	console.info('server started at http://%s:%s', hostname, port);
 });

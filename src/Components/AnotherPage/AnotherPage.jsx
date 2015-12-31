@@ -8,20 +8,20 @@ export class AnotherPage extends Component {
 	}
 
 	componentWillMount() {
-		if (!isBrowser) initialize.bind(this.context.store)();
+		if (!isBrowser) initialize(this.context.store);
 	}
 
 	render () {
-		if (this.props.value === 1 || this.props.value === 2) {
-			console.log(this.props.value);
-			initialize.bind(this.context.store)()
-		};
 		const { store } = this.context;
+		if (this.props.value === 1 || this.props.value === 2) {
+			//Round trip async calls also work
+			initialize(store)
+		};
 		return (
 			<div>
 				<div>{this.props.value}</div>
-				<button onClick={increment.bind(store)}>+</button>
-				<button onClick={decrement.bind(store)}>-</button>
+				<button onClick={() => {increment(store)}}>+</button>
+				<button onClick={decrement.bind(null, store)}>-</button>
 			</div>
 		);
 	}
