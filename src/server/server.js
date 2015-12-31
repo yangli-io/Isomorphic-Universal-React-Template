@@ -3,7 +3,6 @@ import proxy from 'koa-proxy';
 import serve from 'koa-static';
 import html from './markup/html';
 import React from 'react';
-import { renderToString } from 'react-dom/server';
 import { RoutingContext, match } from 'react-router';
 import { Provider } from 'react-redux';
 import routes from '../routes';
@@ -34,12 +33,11 @@ app.use(function *(next) {
 			renderProps = renderProps || {};
 
 			const store = instantiateStore();
-			serverDOM(<Provider store={store}><RoutingContext {...renderProps} /></Provider>); //trigger render
+			const dom = serverDOM(<Provider store={store}><RoutingContext {...renderProps} /></Provider>); //trigger render
 
 			store.async.taskAll().then(() => {
+				const appMarkup = dom.getDOMString();
 				const initialState = store.getState();
-				const filledStore = instantiateStore(initialState);
-				const appMarkup = renderToString(<Provider store={filledStore}><RoutingContext {...renderProps} /></Provider>);
 				this.type = 'text/html';
 				this.body = html({appMarkup, initialState});
 

@@ -1,10 +1,11 @@
-import jsdom from 'jsdom';
+import { jsdom } from 'jsdom';
 import { render, unmountComponentAtNode } from 'react-dom';
+import ReactMarkupChecksum from 'react/lib/ReactMarkupChecksum';
 
 const dom = '<!doctype html><html><body><div id="root"></div></body></html>';
 
 //For any global dom activities
-const doc = jsdom.jsdom(dom);
+const doc = jsdom(dom);
 const win = doc.defaultView;
 global.document = doc;
 global.window = win;
@@ -19,7 +20,15 @@ global.window = win;
 
 export default function(reactElement) {
 	//renders the dom
-	let doc = jsdom.jsdom(dom);
-	let reactRoot = doc.defaultView.document.getElementById('root');
+	const doc = jsdom(dom);
+	const reactRoot = doc.defaultView.document.getElementById('root');
 	render(reactElement, reactRoot);
+
+	return {
+		getDOMString: function(){
+			const htmlString = reactRoot.innerHTML;
+			const htmlStringWithCheckSum = ReactMarkupChecksum.addChecksumToMarkup(htmlString);
+			return htmlStringWithCheckSum;
+		}
+	}
 }
