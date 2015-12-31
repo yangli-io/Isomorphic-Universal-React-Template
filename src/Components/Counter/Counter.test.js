@@ -1,14 +1,14 @@
 import React from 'react';
 import { renderIntoDocument } from 'react-addons-test-utils';
 import { findDOMNode } from 'react-dom';
-import { AnotherPage } from './AnotherPage';
+import { Counter } from './Counter';
 
-describe('AnotherPage', () => {
+describe('Counter', () => {
 	let component;
 	let renderedElement;
 	before(() => {
 		setBrowser();
-		component = renderIntoDocument(<AnotherPage/>);
+		component = renderIntoDocument(<Counter/>);
 		renderedElement = findDOMNode(component);
 	});
 

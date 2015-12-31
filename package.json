@@ -1,10 +1,10 @@
 {
-  "name": "wankawoka",
+  "name": "Isomorphic-Universal-React-Template",
   "version": "0.0.0",
-  "license": "Private",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/yangli1990/Isomorphic-Universal-React-Template"
   },
   "main": "start.js",
   "scripts": {
@@ -38,7 +38,8 @@
     "redux-simple-router": "^1.0.2",
     "redux-thunk": "^1.0.2",
     "sass-loader": "^3.1.2",
-    "style-loader": "^0.13.0"
+    "style-loader": "^0.13.0",
+	"jsdom": "^7.2.1",
   },
   "devDependencies": {
     "babel-eslint": "^4.1.6",
@@ -48,7 +49,6 @@
     "eslint": "^1.10.3",
     "eslint-loader": "^1.1.1",
     "eslint-plugin-react": "^3.13.1",
-    "jsdom": "^7.2.1",
     "json-loader": "0.5.3",
     "mocha": "^2.3.4",
     "pre-push": "^0.1.1",
@@ -60,7 +60,7 @@
     "webpack-dev-server": "1.12.1"
   },
   "engines": {
-    "node": ">=0.10.32"
+    "node": ">=5.0.0"
   },
   "pre-push": [
 	"lint",

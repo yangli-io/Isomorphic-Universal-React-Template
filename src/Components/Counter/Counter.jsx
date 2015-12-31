@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { increment, decrement, initialize } from '../../actions/counterActions';
 
-export class AnotherPage extends Component {
+export class Counter extends Component {
 	static contextTypes = {
 		store: PropTypes.object
 	}
@@ -33,5 +33,5 @@ function mapStateToProps(state) {
 	}
 }
 
-export default connect(mapStateToProps)(AnotherPage);
+export default connect(mapStateToProps)(Counter);
 

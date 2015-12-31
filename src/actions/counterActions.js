@@ -4,11 +4,11 @@ export const DECREMENT = 'DECREMENT';
 export function initialize(store) {
 	store.async.task((done) => {
 		setTimeout(() => {
-			done();
 			store.dispatch({
 				type: INCREMENT
 			});
-		}, 2000);
+			done();
+		}, 200);
 	});
 }
 
