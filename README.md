@@ -33,6 +33,9 @@ npm install
 npm run watch
 ```
 
+##Node Versions
+Currently support is only for the latest node version 5.0.0
+
 ##Creating an isomorphic asynchronous call
 
 pass the store context in your actions
