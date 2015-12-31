@@ -1,8 +1,9 @@
 import koa from 'koa';
 import proxy from 'koa-proxy';
 import serve from 'koa-static';
-import html from './markup/html';
+import Html from './markup/html';
 import React from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
 import { RoutingContext, match } from 'react-router';
 import { Provider } from 'react-redux';
 import routes from '../routes';
@@ -36,10 +37,10 @@ app.use(function *(next) {
 			const dom = serverDOM(<Provider store={store}><RoutingContext {...renderProps} /></Provider>); //trigger render
 
 			store.async.taskAll().then(() => {
-				const appMarkup = dom.getDOMString();
+				const markup = dom.getDOMString();
 				const initialState = store.getState();
 				this.type = 'text/html';
-				this.body = html({appMarkup, initialState});
+				this.body = renderToStaticMarkup(<Html markup={markup} initialState={initialState} />);
 
 				callback(null);
 			})

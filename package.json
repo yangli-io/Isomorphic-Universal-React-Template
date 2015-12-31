@@ -63,6 +63,7 @@
     "node": ">=0.10.32"
   },
   "pre-push": [
+	"lint",
     "test"
   ]
 }
