@@ -16,6 +16,7 @@ Some of the things it includes are
 - [x] eslint
 - [x] git pre-push lint/test (make sure you don't push any untested code)
 - [x] koa (for server)
+- [x] babel (es6/es7)
 - [ ] redux-dev-tools
 - [ ] mocha test coverage
 
