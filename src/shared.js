@@ -15,7 +15,7 @@ const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 export function instantiateStore(initialState) {
 	const store = new createStoreWithMiddleware(reducer, initialState);
 	store.async = new async();
-	syncReduxAndRouter(history, store);
+	if (isBrowser) syncReduxAndRouter(history, store);
 	return store;
 }
 

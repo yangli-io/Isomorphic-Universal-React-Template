@@ -10,6 +10,15 @@ export default class Async {
 	}
 
 	taskAll() {
-		return Promise.all(this.promises);
+		return new Promise((resolve) => {
+			const recursiveAll = () => {
+				const oldLength = this.promises.length;
+				Promise.all(this.promises).then(() => {
+					if (oldLength === this.promises.length) resolve()
+					else recursiveAll();
+				});
+			};
+			recursiveAll();
+		})
 	}
 }

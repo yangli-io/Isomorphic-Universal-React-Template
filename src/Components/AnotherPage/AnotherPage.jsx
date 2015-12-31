@@ -8,11 +8,14 @@ export class AnotherPage extends Component {
 	}
 
 	componentWillMount() {
-		console.log('wootz');
 		if (!isBrowser) initialize.bind(this.context.store)();
 	}
 
 	render () {
+		if (this.props.value === 1 || this.props.value === 2) {
+			console.log(this.props.value);
+			initialize.bind(this.context.store)()
+		};
 		const { store } = this.context;
 		return (
 			<div>

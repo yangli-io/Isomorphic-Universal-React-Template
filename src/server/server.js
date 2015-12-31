@@ -8,6 +8,7 @@ import { RoutingContext, match } from 'react-router';
 import { Provider } from 'react-redux';
 import routes from '../routes';
 import { instantiateStore } from '../shared';
+import serverDOM from './serverDOM';
 
 const app      = koa();
 const hostname = process.env.HOSTNAME || 'localhost';
@@ -17,8 +18,6 @@ app.use(serve('static', {defer: true}));
 
 app.use(function *(next) {
 	const location = this.url;
-	const webserver = process.env.NODE_ENV === 'production' ? '' : '//' + hostname + ':8080';
-
 
 	yield ((callback) => {
 		match({routes, location}, (error, redirectLocation, renderProps) => {
@@ -35,7 +34,7 @@ app.use(function *(next) {
 			renderProps = renderProps || {};
 
 			const store = instantiateStore();
-			renderToString(<Provider store={store}><RoutingContext {...renderProps} /></Provider>); //trigger render
+			serverDOM(<Provider store={store}><RoutingContext {...renderProps} /></Provider>); //trigger render
 
 			store.async.taskAll().then(() => {
 				const initialState = store.getState();
@@ -48,14 +47,6 @@ app.use(function *(next) {
 			})
 		});
 	});
-
-	/*yield (callback => {
-		store.async.promiseAll().then(() => {
-			callback(null);
-		})
-	});
-
-	this.body = 'hello world';*/
 });
 
 

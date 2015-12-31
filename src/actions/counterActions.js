@@ -8,7 +8,7 @@ export function initialize() {
 			this.dispatch({
 				type: INCREMENT
 			});
-		}, 200);
+		}, 2000);
 	});
 }
 
