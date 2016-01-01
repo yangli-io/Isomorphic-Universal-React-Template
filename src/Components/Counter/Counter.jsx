@@ -13,10 +13,6 @@ export class Counter extends Component {
 
 	render () {
 		const { store } = this.context;
-		if (this.props.value === 1 || this.props.value === 2) {
-			//Round trip async calls also work
-			initialize(store)
-		};
 		return (
 			<div>
 				<div>{this.props.value}</div>
