@@ -17,8 +17,8 @@ Some of the things it includes are
 - [x] git pre-push lint/test (make sure you don't push any untested code)
 - [x] koa (for server)
 - [x] babel (es6/es7)
+- [x] mocha test coverage
 - [ ] redux-dev-tools
-- [ ] mocha test coverage
 
 There are heaps of these templates online, please only use this if you're looking to create an isomorphic app.
 
@@ -101,6 +101,19 @@ Use the global variable 'isBrowser'
 ```
 if (isBrowser) console.log('this is a browser console.log');
 if (!isBrowser) console.log('this is a server console.log');
+```
+
+##Unit Testing
+Unit testing is using mocha and jsdom (that's right, no phantom js)
+
+To run the tests
+```
+npm test
+```
+
+For coverage
+```
+npm run test-cover
 ```
 
 ##License

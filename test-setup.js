@@ -1,6 +1,7 @@
 import sinon from 'sinon';
 import chai, { expect } from 'chai';
 import sinonChai from 'sinon-chai';
+import { jsdom } from 'jsdom';
 
 global.expect = expect;
 global.sinon = sinon;
@@ -15,10 +16,8 @@ global.setServer = function() {
 chai.Should();
 chai.use(sinonChai);
 
-import jsdom from 'jsdom';
-
 // setup the simplest document possible
-const doc = jsdom.jsdom('<!doctype html><html><body></body></html>')
+const doc = jsdom('<!doctype html><html><body></body></html>');
 
 // get the window object out of the document
 const win = doc.defaultView;
@@ -28,16 +27,12 @@ const win = doc.defaultView;
 global.document = doc;
 global.window = win;
 
-// take all properties of the window object and also attach it to the
-// mocha global object
-propagateToGlobal(win);
-
 // from mocha-jsdom https://github.com/rstacruz/mocha-jsdom/blob/master/index.js#L80
-function propagateToGlobal (window) {
-	for (let key in window) {
+(function (window) {
+	for (var key in window) {
 		if (!window.hasOwnProperty(key)) continue;
 		if (key in global) continue;
 
 		global[key] = window[key]
 	}
-}
+})(win);
