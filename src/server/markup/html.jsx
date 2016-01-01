@@ -2,12 +2,13 @@ import React, { Component, PropTypes } from 'react';
 
 export default class HTML extends Component {
 	static propTypes = {
-		markup: PropTypes.string,
-		initialState: PropTypes.object
+		markup: PropTypes.string.isRequired,
+		initialState: PropTypes.object.isRequired,
+		assetPath: PropTypes.string.isRequired
 	}
 
 	render() {
-		const { markup, initialState } = this.props;
+		const { markup, initialState, assetPath } = this.props;
 		const initialStateString = `window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};`;
 		return (
 			<html lang="en-us">
@@ -15,12 +16,12 @@ export default class HTML extends Component {
 					<meta charset="utf-8" />
 					<title>react-isomorphic-starterkit</title>
 					<link rel="shortcut icon" href="/favicon.ico" />
-					<link rel="stylesheet" href="http://localhost:8080/dist/style.css" />
+					<link rel="stylesheet" href={`${assetPath}/dist/style.css`} />
 				</head>
 				<body>
 					<div id="root" dangerouslySetInnerHTML={{__html: markup}}></div>
 					<script dangerouslySetInnerHTML={{__html: initialStateString}}></script>
-					<script src="http://localhost:8080/dist/client.js"></script>
+					<script src={`${assetPath}/dist/client.js`}></script>
 				</body>
 			</html>
 		)
