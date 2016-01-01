@@ -1,5 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 
+function safeStringify(obj) {
+	return JSON.stringify(obj).replace(/<\/script/g, '<\\/script').replace(/<!--/g, '<\\!--');
+}
+
 export default class HTML extends Component {
 	static propTypes = {
 		markup: PropTypes.string.isRequired,
@@ -9,11 +13,11 @@ export default class HTML extends Component {
 
 	render() {
 		const { markup, initialState, assetPath } = this.props;
-		const initialStateString = `window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};`;
+		const initialStateString = `window.__INITIAL_STATE__ = ${safeStringify(initialState)};`;
 		return (
 			<html lang="en-us">
 				<head>
-					<meta charset="utf-8" />
+					<meta charSet="utf-8" />
 					<title>react-isomorphic-starterkit</title>
 					<link rel="shortcut icon" href="/favicon.ico" />
 					<link rel="stylesheet" href={`${assetPath}/dist/style.css`} />

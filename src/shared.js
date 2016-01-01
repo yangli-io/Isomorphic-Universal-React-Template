@@ -1,4 +1,3 @@
-import 'babel-polyfill';
 import createBrowserHistory from 'history/lib/createBrowserHistory';
 import { syncReduxAndRouter, routeReducer } from 'redux-simple-router';
 import reducers from './reducers/reducers';

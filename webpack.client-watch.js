@@ -23,6 +23,7 @@ config.plugins = [
 	new ExtractTextPlugin("style.css")
 ];
 
+config.module.preLoaders.push({test: /\.jsx?$/, loaders: ['eslint-loader']});
 config.module.postLoaders.push({test: /\.js$/, loaders: ["react-hot"], exclude: /node_modules/});
 
 config.devServer = {

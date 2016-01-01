@@ -1,5 +1,4 @@
 import koa from 'koa';
-import proxy from 'koa-proxy';
 import serve from 'koa-static';
 import Html from './markup/html';
 import React from 'react';
@@ -44,7 +43,7 @@ app.use(function *(next) {
 				const markup = dom.getDOMString();
 				const initialState = store.getState();
 				this.type = 'text/html';
-				this.body = renderToStaticMarkup(<Html markup={markup} initialState={initialState} assetPath={assetPath}/>);
+				this.body = '<!DOCTYPE HTML>' + renderToStaticMarkup(<Html markup={markup} initialState={initialState} assetPath={assetPath}/>);
 
 				callback(null);
 			})

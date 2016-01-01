@@ -24,12 +24,7 @@ module.exports = {
 		new ExtractTextPlugin("style.css")
 	],
 	module:  {
-		preLoaders: [
-			{
-				test: /\.jsx?$/,
-				loaders: ['eslint-loader']
-			}
-		],
+		preLoaders: [],
 		loaders: [
 			{test: /\.json$/, loaders: ["json"]},
 			{test: /\.jsx?$/, loaders: ["babel"], exclude: /node_modules/},

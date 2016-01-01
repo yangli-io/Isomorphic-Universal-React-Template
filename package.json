@@ -26,7 +26,6 @@
     "extract-text-webpack-plugin": "^0.9.1",
     "history": "1.13.0",
     "koa": "1.1.2",
-    "koa-proxy": "0.4.1",
     "koa-static": "1.5.2",
     "node-sass": "^3.4.2",
     "piping": "0.3.0",

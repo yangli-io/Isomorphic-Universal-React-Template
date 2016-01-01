@@ -4,8 +4,12 @@ require("babel-core/register");
 global.isBrowser = false;
 
 if (process.env.NODE_ENV !== "production") {
-	if (!require("piping")({hook: true, includeModules: false})) {
-		return;
+	try {
+		if (!require("piping")({hook: true, includeModules: false})) {
+			return;
+		}
+	} catch (e) {
+		console.log('production environment - no piping');
 	}
 }
 
