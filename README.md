@@ -45,12 +45,12 @@ Currently support is only for the latest node version 5.0.0
 ##Creating an isomorphic asynchronous call
 
 pass the store context in your actions
-```
+````javascript
 increment(this.context.store); //Make sure you declare the contextTypes
-```
+````
 
 
-```
+````javascript
 import React { Component, PropTypes } from 'react';
 import { increment, decrement } from './actions'
 
@@ -79,10 +79,10 @@ export class Counter extends Component {
 		);
 	}
 }
-```
+````
 
 In your action make sure you wrap your async events in async if you want it to be rendered asynchronously
-```
+````javascript
 export function initialize(store) {
 	store.async.task((done) => {
 		setTimeout(() => {
@@ -93,15 +93,15 @@ export function initialize(store) {
 		}, 2000);
 	});
 }
-```
+````
 
 ##Differentiate between server and client
 Use the global variable 'isBrowser'
 
-```
+````javascript
 if (isBrowser) console.log('this is a browser console.log');
 if (!isBrowser) console.log('this is a server console.log');
-```
+````
 
 ##Unit Testing
 Unit testing is using mocha and jsdom (that's right, no phantom js)
