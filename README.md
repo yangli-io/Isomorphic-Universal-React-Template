@@ -51,7 +51,7 @@ increment(this.context.store); //Make sure you declare the contextTypes
 
 
 ````javascript
-import React { Component, PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { increment, decrement } from './actions'
 
 export class Counter extends Component {
