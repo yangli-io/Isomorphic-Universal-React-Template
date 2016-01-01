@@ -34,6 +34,16 @@ npm install
 npm run watch
 ```
 
+Production
+
+```
+npm run build
+```
+
+```
+NODE_ENV="production" npm start
+```
+
 ##Node Versions
 Currently support is only for the latest node version 5.0.0
 

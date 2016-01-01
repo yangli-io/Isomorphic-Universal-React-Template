@@ -13,10 +13,10 @@ import serverDOM from './serverDOM';
 const app      = koa();
 const hostname = process.env.HOSTNAME || 'localhost';
 const port     = process.env.PORT || 8000;
-if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === 'production') {
 	console.log('running in production');
 }
-const assetPath = process.env.NODE_ENV === "production" ? '' : 'http://localhost:8080';
+const assetPath = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:8080';
 
 app.use(serve('static', {defer: true}));
 
