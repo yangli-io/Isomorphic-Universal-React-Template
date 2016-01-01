@@ -39,9 +39,6 @@ Production
 npm start
 ```
 
-##Automatic deploy to Heroku
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-
 ##Node Versions
 Currently support is only for the latest node version 5.0.0
 
