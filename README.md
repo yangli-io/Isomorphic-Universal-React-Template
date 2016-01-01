@@ -35,13 +35,8 @@ npm run watch
 ```
 
 Production
-
 ```
-npm run build
-```
-
-```
-NODE_ENV="production" npm start
+npm start
 ```
 
 ##Automatic deploy to Heroku

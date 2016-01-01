@@ -2,6 +2,5 @@
 	"name": "An Isomorphic React Example",
 	"description": "An Isomorphic React Example",
 	"repository": "https://github.com/yangli1990/Isomorphic-Universal-React-Template",
-	"logo": "https://node-js-sample.herokuapp.com/node.png",
 	"keywords": ["react", "koa", "webpack"]
 }

@@ -8,12 +8,13 @@
   },
   "main": "start.js",
   "scripts": {
-    "start": "NODE_PATH=\"./src\" node --harmony ./start",
+	"start": "npm run build && NODE_ENV=production npm run start-server",
+    "start-server": "NODE_PATH=\"./src\" node --harmony ./start",
     "lint": "eslint src/** --ext .js --ext .jsx",
     "build": "node ./node_modules/webpack/bin/webpack.js --verbose --colors --display-error-details --config webpack.client.js",
     "test": "node_modules/.bin/mocha --compilers js:babel-core/register test-setup.js 'src/**/*.test.js'",
     "watch-client": "node ./node_modules/webpack/bin/webpack.js --verbose --colors --display-error-details --config webpack.client-watch.js && node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.client-watch.js",
-    "watch": "node ./node_modules/concurrently/src/main.js --kill-others \"npm run watch-client\" \"npm run start\""
+    "watch": "node ./node_modules/concurrently/src/main.js --kill-others \"npm run watch-client\" \"npm run start-server\""
   },
   "dependencies": {
     "babel": "6.1.18",
