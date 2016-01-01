@@ -18,7 +18,9 @@ const Client = (
 );
 
 const reactRoot = window.document.getElementById('root');
+store.async.setClientPreRender();
 render(Client, reactRoot);
+store.async.setClientPostRender();
 
 if (process.env.NODE_ENV !== 'production') {
 	if (!reactRoot.firstChild || !reactRoot.firstChild.attributes ||

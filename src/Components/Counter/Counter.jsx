@@ -8,7 +8,7 @@ export class Counter extends Component {
 	}
 
 	componentWillMount() {
-		if (!isBrowser) initialize(this.context.store);
+		initialize(this.context.store);
 	}
 
 	render () {

@@ -24,7 +24,7 @@ export default class HTML extends Component {
 				</head>
 				<body>
 					<div id="root" dangerouslySetInnerHTML={{__html: markup}}></div>
-					<script dangerouslySetInnerHTML={{__html: initialStateString}} type="application/json"></script>
+					<script dangerouslySetInnerHTML={{__html: initialStateString}} type="text/javascript"></script>
 					<script src={`${assetPath}/dist/client.js`} type="text/javascript"></script>
 				</body>
 			</html>

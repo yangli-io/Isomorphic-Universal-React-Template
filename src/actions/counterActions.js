@@ -8,7 +8,7 @@ export function initialize(store) {
 				type: INCREMENT
 			});
 			done();
-		}, 200);
+		}, 500);
 	});
 }
 
