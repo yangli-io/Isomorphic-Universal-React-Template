@@ -9,7 +9,7 @@ export default class HTML extends Component {
 		markup: PropTypes.string.isRequired,
 		initialState: PropTypes.object.isRequired,
 		assetPath: PropTypes.string.isRequired
-	}
+	};
 
 	render() {
 		const { markup, initialState, assetPath } = this.props;
