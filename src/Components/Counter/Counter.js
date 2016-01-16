@@ -5,7 +5,7 @@ import { increment, decrement, initialize } from '../../actions/counterActions';
 export class Counter extends Component {
 	static contextTypes = {
 		store: PropTypes.object
-	}
+	};
 
 	componentWillMount() {
 		initialize(this.context.store);
