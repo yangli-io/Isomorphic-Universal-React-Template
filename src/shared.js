@@ -6,7 +6,7 @@ import thunk from 'redux-thunk';
 import async from './async/async';
 
 const reducer = combineReducers(Object.assign({}, reducers, {
-	routing: routeReducer
+	routing: routeReducer,
 }));
 
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
@@ -18,4 +18,4 @@ export function instantiateStore(initialState) {
 	return store;
 }
 
-export const history = isBrowser ? createBrowserHistory() : { listen: () => {} };
+export const history = isBrowser ? createBrowserHistory() : { listen: () => null };

@@ -5,7 +5,7 @@ export function initialize(store) {
 	store.async.task((done) => {
 		setTimeout(() => {
 			store.dispatch({
-				type: INCREMENT
+				type: INCREMENT,
 			});
 			done();
 		}, 500);
@@ -14,12 +14,12 @@ export function initialize(store) {
 
 export function increment(store) {
 	store.dispatch({
-		type: INCREMENT
+		type: INCREMENT,
 	});
 }
 
 export function decrement(store) {
 	store.dispatch({
-		type: DECREMENT
+		type: DECREMENT,
 	});
 }

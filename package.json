@@ -9,7 +9,7 @@
   "main": "start.js",
   "scripts": {
     "start": "npm run build && NODE_ENV=production npm run start-server",
-    "start-server": "NODE_PATH=\"./src\" node --harmony ./start",
+    "start-server": "node --harmony ./start",
     "lint": "eslint src/** --ext .js --ext .jsx",
     "build": "webpack --verbose --colors --display-error-details --config webpack.client.js",
     "test": "_mocha --compilers js:babel-core/register test-setup.js 'src/**/*.test.js'",
@@ -51,6 +51,7 @@
     "chai": "^3.4.1",
     "concurrently": "0.1.1",
     "eslint": "^1.10.3",
+    "eslint-config-airbnb": "^4.0.0",
     "eslint-loader": "^1.1.1",
     "eslint-plugin-react": "^3.13.1",
     "isparta": "^4.0.0",
