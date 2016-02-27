@@ -10,12 +10,13 @@
   "scripts": {
     "start": "npm run build && NODE_ENV=production npm run start-server",
     "start-server": "node --harmony ./start",
+    "nodemon": "node_modules/.bin/nodemon ./start.js",
     "lint": "eslint src/** --ext .js --ext .jsx",
     "build": "webpack --verbose --colors --display-error-details --config webpack.client.js",
     "test": "_mocha --compilers js:babel-core/register test-setup.js 'src/**/*.test.js'",
     "test-cover": "babel-node node_modules/isparta/bin/isparta cover --include '**/*.js' --include '**/*.jsx' --report text --report html node_modules/mocha/bin/_mocha -- test-setup.js 'src/**/*.test.js'",
     "watch-client": "webpack --verbose --colors --display-error-details --config webpack.client-watch.js && node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.client-watch.js",
-    "watch": "concurrent --kill-others \"npm run watch-client\" \"npm run start-server\""
+    "watch": "concurrent --kill-others \"npm run watch-client\" \"npm run nodemon\""
   },
   "dependencies": {
     "babel": "6.1.18",
@@ -33,7 +34,6 @@
     "koa": "1.1.2",
     "koa-static": "1.5.2",
     "node-sass": "^3.4.2",
-    "piping": "0.3.0",
     "react": "0.14.2",
     "react-dom": "0.14.2",
     "react-redux": "^4.0.5",
@@ -56,6 +56,7 @@
     "eslint-plugin-react": "^3.13.1",
     "isparta": "^4.0.0",
     "mocha": "^2.3.4",
+    "nodemon": "^1.9.1",
     "pre-push": "^0.1.1",
     "proxyquire": "^1.7.3",
     "react-addons-test-utils": "^0.14.3",
