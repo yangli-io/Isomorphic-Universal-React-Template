@@ -3,30 +3,36 @@ import { connect } from 'react-redux';
 import { increment, decrement, initialize } from '../../actions/counterActions';
 
 export class Counter extends Component {
-	static contextTypes = {
-		store: PropTypes.object
-	};
+  static contextTypes = {
+    store: PropTypes.object
+  };
 
-	componentWillMount() {
-		initialize(this.context.store);
-	}
+  componentWillMount() {
+    initialize(this.context.store);
+  }
 
-	render () {
-		const { store } = this.context;
-		return (
-			<div>
-				<div>{this.props.value}</div>
-				<button onClick={() => {increment(store)}}>+</button>
-				<button onClick={decrement.bind(null, store)}>-</button>
-			</div>
-		);
-	}
+  render () {
+    let bingoClass = '';
+
+    if (this.props.value === 5) {
+      bingoClass = 'counter__status--bingo';
+    }
+
+    const { store } = this.context;
+    return (
+      <div className="counter">
+        <div className={`counter__status ${bingoClass}`}>{this.props.value}</div>
+        <button onClick={() => {increment(store);}}>+</button>
+        <button onClick={decrement.bind(null, store)}>-</button>
+      </div>
+    );
+  }
 }
 
 function mapStateToProps(state) {
-	return {
-		value: state.counter.value
-	}
+  return {
+    value: state.counter.value
+  };
 }
 
 export default connect(mapStateToProps)(Counter);

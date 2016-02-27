@@ -6,16 +6,16 @@ import thunk from 'redux-thunk';
 import async from './async/async';
 
 const reducer = combineReducers(Object.assign({}, reducers, {
-	routing: routeReducer,
+  routing: routeReducer
 }));
 
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 
-export function instantiateStore(initialState) {
-	const store = new createStoreWithMiddleware(reducer, initialState);
-	store.async = new async();
-	if (isBrowser) syncReduxAndRouter(history, store);
-	return store;
-}
-
 export const history = isBrowser ? createBrowserHistory() : { listen: () => null };
+
+export function instantiateStore(initialState) {
+  const store = new createStoreWithMiddleware(reducer, initialState);
+  store.async = new async();
+  if (isBrowser) syncReduxAndRouter(history, store);
+  return store;
+}

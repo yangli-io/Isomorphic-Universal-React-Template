@@ -10,25 +10,25 @@ const win = doc.defaultView;
 global.document = doc;
 global.window = win;
 (function generateProperties(window) {
-	for (const key in window) {
-		if (!window.hasOwnProperty(key)) continue;
-		if (key in global) continue;
+  for (const key in window) {
+    if (!window.hasOwnProperty(key)) continue;
+    if (key in global) continue;
 
-		global[key] = window[key];
-	}
+    global[key] = window[key];
+  }
 }(win));
 
 export default function (reactElement) {
-	// renders the dom
-	const docInstance = jsdom(dom);
-	const reactRoot = docInstance.defaultView.document.getElementById('root');
-	render(reactElement, reactRoot);
+  // renders the dom
+  const docInstance = jsdom(dom);
+  const reactRoot = docInstance.defaultView.document.getElementById('root');
+  render(reactElement, reactRoot);
 
-	return {
-		getDOMString() {
-			const htmlString = reactRoot.innerHTML;
-			const htmlStringWithCheckSum = ReactMarkupChecksum.addChecksumToMarkup(htmlString);
-			return htmlStringWithCheckSum;
-		},
-	};
+  return {
+    getDOMString() {
+      const htmlString = reactRoot.innerHTML;
+      const htmlStringWithCheckSum = ReactMarkupChecksum.addChecksumToMarkup(htmlString);
+      return htmlStringWithCheckSum;
+    }
+  };
 }

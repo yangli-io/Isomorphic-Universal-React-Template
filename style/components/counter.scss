@@ -1,0 +1,11 @@
+.counter {
+  background-color: #DDD;
+
+  &__status {
+    color: red;
+
+    &--bingo {
+      color: blue;
+    }
+  }
+}

@@ -4,15 +4,15 @@ import { findDOMNode } from 'react-dom';
 import App from './App';
 
 describe('App', () => {
-	let component;
-	let renderedElement;
-	before(() => {
-		setBrowser();
-		component = renderIntoDocument(<App/>);
-		renderedElement = findDOMNode(component);
-	});
+  let component;
+  let renderedElement;
+  before(() => {
+    setBrowser();
+    component = renderIntoDocument(<App/>);
+    renderedElement = findDOMNode(component);
+  });
 
-	it('should be renderable', () => {
-		expect(renderedElement).to.not.be.null;
-	});
+  it('should be renderable', () => {
+    expect(renderedElement).to.not.be.null;
+  });
 });
