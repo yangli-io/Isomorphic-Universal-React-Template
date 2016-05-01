@@ -6,13 +6,13 @@ import { Router } from 'react-router';
 import { history, instantiateStore } from './shared';
 import Routes from './routes';
 
-const initialState = window.__INITIAL_STATE__;
+const initialState = window.__INITIAL_STATE__; //eslint-disable-line
 const store = instantiateStore(initialState);
 
 const Client = (
   <Provider store={store}>
     <Router history={history}>
-      { Routes }
+      {Routes}
     </Router>
   </Provider>
 );
@@ -26,7 +26,8 @@ if (process.env.NODE_ENV !== 'production') {
   if (!reactRoot.firstChild || !reactRoot.firstChild.attributes ||
     !reactRoot.firstChild.attributes['data-react-checksum']) {
     console.error( //eslint-disable-line
-      'Server-side React render was discarded. Make sure that your initial render does not contain any client-side code.'
+      `Server-side React render was discarded.
+      Make sure that your initial render does not contain any client-side code.`
     );
   }
 }

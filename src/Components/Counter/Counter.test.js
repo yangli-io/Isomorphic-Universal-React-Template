@@ -1,6 +1,5 @@
 import React from 'react';
-import TestUtils from 'react-addons-test-utils';
-import { renderIntoDocument } from 'react-addons-test-utils';
+import TestUtils, { renderIntoDocument } from 'react-addons-test-utils';
 import { findDOMNode } from 'react-dom';
 const proxyquire = require('proxyquire').noCallThru();
 
@@ -22,7 +21,7 @@ describe('Counter', () => {
   let renderedElement;
   before(() => {
     setBrowser();
-    component = renderIntoDocument(<Counter/>);
+    component = renderIntoDocument(<Counter />);
     renderedElement = findDOMNode(component);
   });
 

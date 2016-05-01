@@ -5,7 +5,7 @@ export default class Async {
   }
 
   setClientPreRender() {
-    //Prevents anything that was server rendered from running again.
+    // Prevents anything that was server rendered from running again.
     this.clientPrerender = true;
   }
 

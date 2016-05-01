@@ -1,8 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 
 export default class Main extends Component {
-  componentWillMount () {
+  static propTypes = {
+    children: PropTypes.element.isRequired
+  };
+
+  componentWillMount() {
     if (isBrowser) {
       console.log('Hello client'); //eslint-disable-line
     } else {
@@ -10,7 +14,7 @@ export default class Main extends Component {
     }
   }
 
-  render () {
+  render() {
     return (
       <div>
         <h2>Counter App</h2>

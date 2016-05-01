@@ -10,12 +10,9 @@ const win = doc.defaultView;
 global.document = doc;
 global.window = win;
 (function generateProperties(window) {
-  for (const key in window) {
-    if (!window.hasOwnProperty(key)) continue;
-    if (key in global) continue;
-
-    global[key] = window[key];
-  }
+  Object.keys(window).forEach(key => {
+    if (window.hasOwnProperty(key) && !global[key]) global[key] = window[key];
+  });
 }(win));
 
 export default function (reactElement) {

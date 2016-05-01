@@ -3,7 +3,7 @@ import serve from 'koa-static';
 import Html from './markup/html';
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { RoutingContext, match } from 'react-router';
+import { RouterContext, match } from 'react-router';
 import { Provider } from 'react-redux';
 import routes from '../routes';
 import { instantiateStore } from '../shared';
@@ -22,7 +22,7 @@ app.use(serve('static', { defer: true }));
 app.use(function *servePage() {
   const location = this.url;
 
-  yield ((callback) => {
+  yield callback => {
     match({ routes, location }, (error, redirectLocation, renderProps) => {
       if (redirectLocation) {
         this.redirect(redirectLocation.pathname + redirectLocation.search, '/');
@@ -39,24 +39,24 @@ app.use(function *servePage() {
       const store = instantiateStore();
       const dom = serverDOM(
         <Provider store={store}>
-          <RoutingContext {...appProps} />
+          <RouterContext {...appProps} />
         </Provider>); // trigger render
 
       store.async.taskAll().then(() => {
         const markup = dom.getDOMString();
         const initialState = store.getState();
         this.type = 'text/html';
-        this.body = `<!DOCTYPE HTML>
-					${renderToStaticMarkup(
-          <Html markup={markup}
-                initialState={initialState}
-                assetPath={assetPath} />)
+        this.body = `<!DOCTYPE HTML>${
+          renderToStaticMarkup(
+            <Html markup={markup}
+                  initialState={initialState}
+                  assetPath={assetPath} />)
           }`;
 
         callback(null);
       });
     });
-  });
+  };
 });
 
 app.listen(port, () => {

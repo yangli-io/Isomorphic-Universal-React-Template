@@ -8,7 +8,7 @@ describe('App', () => {
   let renderedElement;
   before(() => {
     setBrowser();
-    component = renderIntoDocument(<App/>);
+    component = renderIntoDocument(<App />);
     renderedElement = findDOMNode(component);
   });
 

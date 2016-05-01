@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 import { increment, decrement, initialize } from '../../actions/counterActions';
 
 export class Counter extends Component {
+  static propTypes = {
+    value: PropTypes.number
+  };
+
   static contextTypes = {
     store: PropTypes.object
   };
@@ -11,7 +15,7 @@ export class Counter extends Component {
     initialize(this.context.store);
   }
 
-  render () {
+  render() {
     let bingoClass = '';
 
     if (this.props.value === 5) {
@@ -22,7 +26,7 @@ export class Counter extends Component {
     return (
       <div className="counter">
         <div className={`counter__status ${bingoClass}`}>{this.props.value}</div>
-        <button onClick={() => {increment(store);}}>+</button>
+        <button onClick={() => { increment(store); }}>+</button>
         <button onClick={decrement.bind(null, store)}>-</button>
       </div>
     );
