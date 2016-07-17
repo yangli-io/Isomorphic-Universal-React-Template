@@ -3,11 +3,11 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router';
-import { history, instantiateStore } from './shared';
+import { instantiateStore } from './shared';
 import Routes from './routes';
 
 const initialState = window.__INITIAL_STATE__; //eslint-disable-line
-const store = instantiateStore(initialState);
+const { store, history } = instantiateStore(initialState);
 
 const Client = (
   <Provider store={store}>

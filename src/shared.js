@@ -1,21 +1,26 @@
-import createBrowserHistory from 'history/lib/createBrowserHistory';
-import { syncReduxAndRouter, routeReducer } from 'redux-simple-router';
+import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
 import reducers from './reducers/reducers';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { browserHistory } from 'react-router';
 import thunk from 'redux-thunk';
 import async from './async/async';
 
 const reducer = combineReducers(Object.assign({}, reducers, {
-  routing: routeReducer
+  routing: routerReducer
 }));
 
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 
-export const history = isBrowser ? createBrowserHistory() : { listen: () => null };
-
 export function instantiateStore(initialState) {
   const store = new createStoreWithMiddleware(reducer, initialState);
   store.async = new async();
-  if (isBrowser) syncReduxAndRouter(history, store);
-  return store;
+
+  const hasHistory = isBrowser ? browserHistory : { listen: () => null };
+
+  const history = syncHistoryWithStore(hasHistory, store);
+
+  return {
+    store,
+    history
+  };
 }

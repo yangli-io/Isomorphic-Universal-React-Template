@@ -1,18 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 
-export default class Main extends Component {
+export default class App extends Component {
   static propTypes = {
-    children: PropTypes.element.isRequired
+    children: PropTypes.element
   };
-
-  componentWillMount() {
-    if (isBrowser) {
-      console.log('Hello client'); //eslint-disable-line
-    } else {
-      console.log('Hello server'); //eslint-disable-line
-    }
-  }
 
   render() {
     return (

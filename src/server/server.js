@@ -2,12 +2,11 @@ import koa from 'koa';
 import serve from 'koa-static';
 import Html from './markup/html';
 import React from 'react';
-import { renderToStaticMarkup } from 'react-dom/server';
+import { renderToStaticMarkup, renderToString } from 'react-dom/server';
 import { RouterContext, match } from 'react-router';
 import { Provider } from 'react-redux';
 import routes from '../routes';
 import { instantiateStore } from '../shared';
-import serverDOM from './serverDOM';
 
 const app = koa();
 const hostname = process.env.HOSTNAME || 'localhost';
@@ -36,14 +35,19 @@ app.use(function *servePage() {
 
       const appProps = renderProps || {};
 
-      const store = instantiateStore();
-      const dom = serverDOM(
+      const { store } = instantiateStore();
+
+      renderToString(
         <Provider store={store}>
           <RouterContext {...appProps} />
         </Provider>); // trigger render
 
       store.async.taskAll().then(() => {
-        const markup = dom.getDOMString();
+        const markup = renderToString(
+          <Provider store={store}>
+            <RouterContext {...appProps} />
+          </Provider>);
+
         const initialState = store.getState();
         this.type = 'text/html';
         this.body = `<!DOCTYPE HTML>${
