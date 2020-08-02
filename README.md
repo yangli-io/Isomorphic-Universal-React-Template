@@ -1,6 +1,9 @@
-#Isomorphic Universal React Template
+# Isomorphic Universal React Template
 
-##Why?
+## Deprecated
+This is a very old template.
+
+## Why?
 First off, I like to call it Isomorphic so I'll refer it as isomorphic in this repo.
 The reason I created this was because I couldn't find a good isomorphic template on the web so I decided to create my own.
 At first I thought it would be easy, but there was a lot of things missing that I had to build.
@@ -22,7 +25,7 @@ Some of the things it includes are
 
 There are heaps of these templates online, please only use this if you're looking to create an isomorphic app.
 
-##Getting Started
+## Getting Started
 
 Clone this repo.
 
@@ -39,10 +42,10 @@ Production
 npm start
 ```
 
-##Node Versions
+## Node Versions
 Currently support is only for the latest node version 5.0.0
 
-##Creating an isomorphic asynchronous call
+## Creating an isomorphic asynchronous call
 
 pass the store context in your actions
 ````javascript
@@ -95,7 +98,7 @@ export function initialize(store) {
 }
 ````
 
-##Differentiate between server and client
+## Differentiate between server and client
 Use the global variable 'isBrowser'
 
 ````javascript
@@ -103,7 +106,7 @@ if (isBrowser) console.log('this is a browser console.log');
 if (!isBrowser) console.log('this is a server console.log');
 ````
 
-##Unit Testing
+## Unit Testing
 Unit testing is using mocha and jsdom (that's right, no phantom js)
 
 To run the tests
@@ -116,7 +119,7 @@ For coverage
 npm run test-cover
 ```
 
-##License
+## License
 The MIT License (MIT)
 
 Copyright (c) 2015 Yang Li
